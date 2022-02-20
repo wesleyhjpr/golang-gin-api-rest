@@ -1,20 +1,14 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"golang-gin-api-rest/models"
+	"golang-gin-api-rest/routes"
 )
 
-func GetAllStudents(c *gin.Context){
-	c.JSON(200, gin.H {
-		"id":"1",
-		"name":"Wesley",
-	})
-}
-
 func main() {
-	r := gin.Default()
-
-	r.GET("/students", GetAllStudents)
-	
-	r.Run()
+	models.Students = []models.Student{
+		{"Wesley", "12345678900", "123456780"},
+		{"Astolfo", "12345678900", "123456780"},
+	}
+	routes.HandleRequests()
 }
